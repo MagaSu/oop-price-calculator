@@ -40,8 +40,9 @@
 </head>
 <body>
     <br>
+<form method='POST'>
 <span class="custom-dropdown big">
-    <select>
+    <select name='customer'>
         <option>Customer</option>
         <option>The Great Gatsby</option>  
         <option>V for Vendetta</option>
@@ -50,7 +51,7 @@
     </select>
 </span>
 <span class="custom-dropdown big">
-    <select>
+    <select name='product'>
         <option>Product</option>
         <option>Sherlock Holmes</option>
         <option>The Great Gatsby</option>  
@@ -60,6 +61,7 @@
     </select>
 </span>
 <br><br>
-<input type="submit" class='send'>
+<input type="submit" class='send' value='Calculate'>
+    </form>
 </body>
 </html>
