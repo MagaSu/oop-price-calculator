@@ -1,3 +1,9 @@
+<?php
+require '../controller/connection.php';
+require '../model/product.php';
+require '../model/customer.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,21 +49,12 @@
 <form method='POST'>
 <span class="custom-dropdown big">
     <select name='customer'>
-        <option>Customer</option>
-        <option>The Great Gatsby</option>  
-        <option>V for Vendetta</option>
-        <option>The Wolf of Wallstreet</option>
-        <option>Quantum of Solace</option>
+        <?php $products = new Customer($conn); ?>
     </select>
 </span>
 <span class="custom-dropdown big">
     <select name='product'>
-        <option>Product</option>
-        <option>Sherlock Holmes</option>
-        <option>The Great Gatsby</option>  
-        <option>V for Vendetta</option>
-        <option>The Wolf of Wallstreet</option>
-        <option>Quantum of Solace</option>
+        <?php $products = new Product($conn); ?>
     </select>
 </span>
 <br><br>
