@@ -1,7 +1,7 @@
 <?php
 require '../controller/connection.php';
-require '../model/product.php';
-require '../model/customer.php';
+require '../controller/productLoader.php';
+require '../controller/customerLoader.php';
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +42,14 @@ require '../model/customer.php';
             padding: .5em;
             width: 200px;
         }
+
+        .container {
+            border: 1px solid red;
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
@@ -49,16 +57,39 @@ require '../model/customer.php';
 <form method='POST'>
 <span class="custom-dropdown big">
     <select name='customer'>
-        <?php $products = new Customer($conn); ?>
+    <?php 
+        $customersLoader = new customerLoader;
+        $customersLoader->loadcustomers($conn);
+        
+            foreach($customersLoader->loadcustomers($conn) as $customer) {
+        ?>
+            <option> <?php echo $customer ?> </option>;
+        <?php
+                }
+    ?>    
     </select>
 </span>
 <span class="custom-dropdown big">
+    
     <select name='product'>
-        <?php $products = new Product($conn); ?>
+        <?php 
+        $productLoader = new ProductLoader;
+        $productLoader->loadProducts($conn);
+        
+            foreach($productLoader->loadProducts($conn) as $product) {
+        ?>
+            <option> <?php echo $product ?> </option>;
+        <?php
+                }
+         ?>
     </select>
 </span>
 <br><br>
 <input type="submit" class='send' value='Calculate'>
     </form>
+    <div class="container">
+        <p>Customer: XXXX</p>
+        <p>Price: XX.XX</p>
+    </div>
 </body>
 </html>

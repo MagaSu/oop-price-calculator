@@ -6,17 +6,8 @@ class Product {
     private $name;
     private $price;
 
-    public function __construct($conn) {
-        $query = 'SELECT * FROM product';
-        if($result = mysqli_query($conn, $query)){
-            if(mysqli_num_rows($result)) {
-                while($row = mysqli_fetch_array($result)) {
-                ?>
-                    <option> <?php echo $row['name'] ?> </option>;
-                <?php
-                }
-            }
-        }
+    public function __construct() {
+
     }
 
     public function getId() {
