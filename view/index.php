@@ -1,7 +1,6 @@
 <?php
 require '../controller/connection.php';
-require '../controller/productLoader.php';
-require '../controller/customerLoader.php';
+require '../controller/loader.php';
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +45,6 @@ require '../controller/customerLoader.php';
         .container {
             border: 1px solid red;
             width: 500px;
-            height: 300px;
             margin: 0 auto;
             margin-top: 50px;
         }
@@ -58,10 +56,10 @@ require '../controller/customerLoader.php';
 <span class="custom-dropdown big">
     <select name='customer'>
     <?php 
-        $customersLoader = new customerLoader;
-        $customersLoader->loadcustomers($conn);
+        $loader = new loader;
+        $loader->loadCustomers($conn);
         
-            foreach($customersLoader->loadcustomers($conn) as $customer) {
+            foreach($loader->loadCustomers($conn) as $customer) {
     ?>
             <option value=<?php echo $customer['id'] ?>> <?php echo $customer['firstname'] ?> </option>;
     <?php
@@ -73,10 +71,9 @@ require '../controller/customerLoader.php';
     
     <select name='product'>
         <?php 
-        $productLoader = new ProductLoader;
-        $productLoader->loadProducts($conn);
+        $loader->loadProducts($conn);
         
-            foreach($productLoader->loadProducts($conn) as $product) {
+            foreach($loader->loadProducts($conn) as $product) {
         ?>
             <option value=<?php echo $product['id'] ?>> <?php echo $product['name'] ?> </option>;
         <?php
@@ -88,8 +85,10 @@ require '../controller/customerLoader.php';
 <input type="submit" name='submit' class='send' value='Calculate'>
     </form>
     <div class="container">
-        <p>Customer: <?php echo $customersLoader->sendCustomer($conn) ?> </p>
-        <p>Price: €<?php echo $productLoader->sendProduct($conn) ?></p>
+        <p>Customer: <?php echo $loader->sendProduct($conn)['customerName'] ?> </p>
+        <div>
+        <p>Price: €<?php echo $loader->sendProduct($conn)['productPrice'] ?></p>
+        </div>
     </div>
 </body>
 </html>
