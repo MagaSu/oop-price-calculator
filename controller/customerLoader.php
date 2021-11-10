@@ -23,7 +23,6 @@ class CustomerLoader {
         if(isset($_POST['submit'])) {
             $customer = $_POST['customer'];
             $sendCustomer = new customer($customer, $conn);
-
             return $sendCustomer->getFname();
         }
 

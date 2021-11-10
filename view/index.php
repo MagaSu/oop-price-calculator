@@ -88,8 +88,8 @@ require '../controller/customerLoader.php';
 <input type="submit" name='submit' class='send' value='Calculate'>
     </form>
     <div class="container">
-        <p>Customer:<?php echo $customersLoader->sendCustomer($conn) ?> </p>
-        <p>Price: XX.XX</p>
+        <p>Customer: <?php echo $customersLoader->sendCustomer($conn) ?> </p>
+        <p>Price: €<?php echo $productLoader->sendProduct($conn) ?></p>
     </div>
 </body>
 </html>

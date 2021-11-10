@@ -19,10 +19,11 @@ class ProductLoader {
         return $prods;
     }
 
-    public function sendproduct() {
+    public function sendProduct($conn) {
         if(isset($_POST['submit'])) {
             $product = $_POST['product'];
-            $sendproduct = new product($product);
+            $sendProduct = new product($product, $conn);
+            return $sendProduct->getPrice();
         }
     }
 }
