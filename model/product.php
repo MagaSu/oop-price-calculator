@@ -6,8 +6,8 @@ class Product {
     private $name;
     private $price;
 
-    public function __construct() {
-
+    public function __construct($productName) {
+        $this->name = $productName;
     }
 
     public function getId() {

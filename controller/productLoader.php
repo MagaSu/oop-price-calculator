@@ -13,9 +13,16 @@ class ProductLoader {
         $result = mysqli_query($conn, $query);
         if(mysqli_num_rows($result)) {
             while($row = mysqli_fetch_array($result)) {
-                $prods[] = $row['name'];
+                $prods[] = array('id'=>$row['id'], 'name'=>$row['name']);
             }
         }
         return $prods;
+    }
+
+    public function sendproduct() {
+        if(isset($_POST['submit'])) {
+            $product = $_POST['product'];
+            $sendproduct = new product($product);
+        }
     }
 }

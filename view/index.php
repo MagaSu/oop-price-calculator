@@ -62,10 +62,10 @@ require '../controller/customerLoader.php';
         $customersLoader->loadcustomers($conn);
         
             foreach($customersLoader->loadcustomers($conn) as $customer) {
-        ?>
-            <option> <?php echo $customer ?> </option>;
-        <?php
-                }
+    ?>
+            <option value=<?php echo $customer['id'] ?>> <?php echo $customer['firstname'] ?> </option>;
+    <?php
+        }
     ?>    
     </select>
 </span>
@@ -78,17 +78,17 @@ require '../controller/customerLoader.php';
         
             foreach($productLoader->loadProducts($conn) as $product) {
         ?>
-            <option> <?php echo $product ?> </option>;
+            <option value=<?php echo $product['id'] ?>> <?php echo $product['name'] ?> </option>;
         <?php
-                }
+            }
          ?>
     </select>
 </span>
 <br><br>
-<input type="submit" class='send' value='Calculate'>
+<input type="submit" name='submit' class='send' value='Calculate'>
     </form>
     <div class="container">
-        <p>Customer: XXXX</p>
+        <p>Customer:<?php echo $customersLoader->sendCustomer($conn) ?> </p>
         <p>Price: XX.XX</p>
     </div>
 </body>
