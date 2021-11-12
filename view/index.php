@@ -84,6 +84,7 @@ require '../controller/loader.php';
 <br><br>
 <input type="submit" name='submit' class='send' value='Calculate'>
     </form>
+<<<<<<< HEAD
     <?php
         if(isset($_POST['submit'])) {
     ?>
@@ -92,6 +93,12 @@ require '../controller/loader.php';
             <div>
             <p>Price: €<?php echo $loader->sendProduct($conn)['productPrice'] ?></p>
             </div>
+=======
+    <div class="container">
+        <p>Customer: <?php echo isset($loader->sendProduct($conn)['customerName']) ? $loader->sendProduct($conn)['customerName'] : 'Not Selected' ?> </p>
+        <div>
+        <p>Price: €<?php echo isset($loader->sendProduct($conn)['productPrice']) ? $loader->sendProduct($conn)['productPrice'] : '0' ?></p>
+>>>>>>> b32406b9f9677842dfd7313e7b3d8498a7101153
         </div>
     <?php
         }
