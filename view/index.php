@@ -85,9 +85,9 @@ require '../controller/loader.php';
 <input type="submit" name='submit' class='send' value='Calculate'>
     </form>
     <div class="container">
-        <p>Customer: <?php echo $loader->sendProduct($conn)['customerName'] ?> </p>
+        <p>Customer: <?php echo isset($loader->sendProduct($conn)['customerName']) ? $loader->sendProduct($conn)['customerName'] : 'Not Selected' ?> </p>
         <div>
-        <p>Price: €<?php echo $loader->sendProduct($conn)['productPrice'] ?></p>
+        <p>Price: €<?php echo isset($loader->sendProduct($conn)['productPrice']) ? $loader->sendProduct($conn)['productPrice'] : '0' ?></p>
         </div>
     </div>
 </body>
