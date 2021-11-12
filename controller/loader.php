@@ -41,9 +41,10 @@ class Loader {
             $customer = $_POST['customer'];
             $sendCustomer = new customer($customer, $conn);
 
-            $calculator = new Calculator($sendProduct, $sendCustomer);
+            $calculator = new Calculator($sendCustomer, $sendProduct);
+            $calculator->calculatePrice();
 
-            return array('productPrice'=> $sendProduct->getPrice(), 'customerName'=> $sendCustomer->getFname());
+            return array('productPrice'=> $sendProduct->getPrice() - $sendCustomer->getFixed_discount(), 'customerName'=> $sendCustomer->getFname());
         }
     }
 }

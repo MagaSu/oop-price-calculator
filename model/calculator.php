@@ -9,7 +9,7 @@ class Calculator{
         $this->selectedProduct = $selectedProduct;
     }
 
-    function calculatePrice($conn) {
+    function calculatePrice() {
         
     }
 

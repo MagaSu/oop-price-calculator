@@ -84,11 +84,18 @@ require '../controller/loader.php';
 <br><br>
 <input type="submit" name='submit' class='send' value='Calculate'>
     </form>
-    <div class="container">
-        <p>Customer: <?php echo $loader->sendProduct($conn)['customerName'] ?> </p>
-        <div>
-        <p>Price: €<?php echo $loader->sendProduct($conn)['productPrice'] ?></p>
+    <?php
+        if(isset($_POST['submit'])) {
+    ?>
+        <div class="container">
+            <p>Customer: <?php echo $loader->sendProduct($conn)['customerName'] ?> </p>
+            <div>
+            <p>Price: €<?php echo $loader->sendProduct($conn)['productPrice'] ?></p>
+            </div>
         </div>
-    </div>
+    <?php
+        }
+    ?>
+    
 </body>
 </html>
